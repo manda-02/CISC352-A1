@@ -92,7 +92,36 @@ def prop_FC(csp, newVar=None):
        only one uninstantiated variable. Remember to keep
        track of all pruned variable,value pairs and return '''
     #IMPLEMENT
-    pass
+
+    # If newVar is None, forward check all constraints. 
+    # Otherwise only check constraints containing newVar.
+    fc_constraints = []
+    pruned = []
+
+    if (newVar != None):
+        constraints = csp.get_cons_with_var(newVar)
+    else:
+        constraints = csp.get_all_cons()
+
+    # A propagator function that propagates according to the FC 
+    # algorithm that check constraints that have
+    # exactly one variable in their scope that has not assigned 
+    # with a value, and prune appropriately. 
+    # for i in constraints:
+    #     if i.get_n_unasgn() == 1:
+
+
+    unassigned = []
+    for i in constraints:
+        if i.get_n_unasgn() == 1:
+            # unassigned_v = constraints[i]
+            v = unassigned.append(constraints[i])
+            for j in v.get_scope():
+                if v.get_scope() == 0:
+                    pruned.append(v)
+                    # v.prune_value(???)
+                    return False, pruned
+
 
 
 def prop_GAC(csp, newVar=None):

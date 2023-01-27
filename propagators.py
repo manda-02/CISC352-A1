@@ -99,9 +99,9 @@ def prop_FC(csp, newVar=None):
     pruned = []
 
     if (newVar != None):
-        constraints = csp.get_cons_with_var(newVar)
+        fc_constraints = csp.get_cons_with_var(newVar)
     else:
-        constraints = csp.get_all_cons()
+        fc_constraints = csp.get_all_cons()
 
     # A propagator function that propagates according to the FC 
     # algorithm that check constraints that have
@@ -112,10 +112,10 @@ def prop_FC(csp, newVar=None):
 
 
     unassigned = []
-    for i in constraints:
+    for i in fc_constraints:
         if i.get_n_unasgn() == 1:
-            # unassigned_v = constraints[i]
-            v = unassigned.append(constraints[i])
+            # unassigned_v = fc_constraints[i]
+            v = unassigned.append(fc_constraints[i])
             for j in v.get_scope():
                 if v.get_scope() == 0:
                     pruned.append(v)

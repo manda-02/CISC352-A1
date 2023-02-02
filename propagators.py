@@ -103,6 +103,24 @@ def prop_FC(csp, newVar=None):
     else:
         fc_constraints = csp.get_all_cons()
 
+
+    for i in fc_constraints:
+        if i.get_unasgn() == 1:
+            un_assigned = i.get_unasgn_vars()[0]
+
+            for d in un_assigned.cur_domain():
+                if not i.check_var_val(un_assigned, d):    # change this
+                    tuple = (un_assigned, d)
+                    if(tuple not in pruned):
+                        pruned.append(tuple)
+                        un_assigned.prune_value(d)
+                        
+            if un_assigned.cur_domain_size() == 0:
+                return False, pruned
+            
+    return True, pruned
+
+
     # A propagator function that propagates according to the FC 
     # algorithm that check constraints that have
     # exactly one variable in their scope that has not assigned 
@@ -110,17 +128,16 @@ def prop_FC(csp, newVar=None):
     # for i in constraints:
     #     if i.get_n_unasgn() == 1:
 
-
-    unassigned = []
-    for i in fc_constraints:
-        if i.get_n_unasgn() == 1:
-            # unassigned_v = fc_constraints[i]
-            v = unassigned.append(fc_constraints[i])
-            for j in v.get_scope():
-                if v.get_scope() == 0:
-                    pruned.append(v)
-                    # v.prune_value(???)
-                    return False, pruned
+    # unassigned = []
+    # for i in fc_constraints:
+    #     if i.get_n_unasgn() == 1:
+    #         # unassigned_v = fc_constraints[i]
+    #         v = unassigned.append(fc_constraints[i])
+    #         for j in v.get_scope():
+    #             if v.get_scope() == 0:
+    #                 pruned.append(v)
+    #                 # v.prune_value(???)
+    #                 return False, pruned
 
 
 
@@ -128,5 +145,39 @@ def prop_GAC(csp, newVar=None):
     '''Do GAC propagation. If newVar is None we do initial GAC enforce
        processing all constraints. Otherwise we do GAC enforce with
        constraints containing newVar on GAC Queue'''
+
+    # A propagator function that propagates according to the GAC algorithm, as covered in lecture. If
+    # newVar is None, run GAC on all constraints. Otherwise, only check constraints containing
+    # newVar.
+
     #IMPLEMENT
-    pass
+    pruned = []
+    queue = []
+    
+    if (newVar != None):
+        gac_constraints = csp.get_cons_with_var(newVar)
+    else:
+        gac_constraints = csp.get_all_cons()
+   
+    
+    for q in gac_constraints:
+        queue.append(q)
+    
+    while len(queue) != 0:
+        q = queue.pop(0)
+        for elem in q.get_scope():
+            for j in elem.cur_domain():
+                if not q.check_var_val(elem, j):     # change this   if cannot be satisfied
+                    tuple = (elem, j)
+                    if(tuple not in pruned):
+                        pruned.append(tuple)
+                        elem.prune_value(j)
+                    if elem.cur_domain_size() == 0:   
+                        queue.clear()
+                        return False, pruned
+                    else:   # if removed
+                        for k in csp.get_cons_with_var(elem):
+                            if (k not in queue):
+                                queue.append(k)
+    return True, pruned
+

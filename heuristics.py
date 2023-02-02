@@ -29,10 +29,40 @@ var_ordering == a function with the following template
 
 def ord_dh(csp):
     ''' return variables according to the Degree Heuristic '''
+
+    # A variable ordering heuristic that chooses the next variable to be assigned according to the Degree
+    # heuristic (DH). ord dh returns the variable that is involved in the largest number of constraints,
+    # which have other unassigned variables.
+
     # IMPLEMENT
-    pass
+    mini_domain = len(csp.get_cons_with_var())   # degree of the heuristic
+    mini_val = None
+    unassigned_vars = csp.get_all_unasgn_vars()
+
+    # find the minimum value in the domain
+    for i in unassigned_vars:
+        if i.cur_domain_size() < mini_domain:
+            mini_domain = i.cur_domain_size()
+            mini_val = i
+    return mini_val  
+   
 
 def ord_mrv(csp):
     ''' return variable according to the Minimum Remaining Values heuristic '''
+
+    # A variable ordering heuristic that chooses the next variable to be assigned according to the MinimumRemaining-Value (MRV) heuristic. 
+    # ord mrv returns the variable with the most constrained current
+    # domain (i.e., the variable with the fewest legal values remaining).
     # IMPLEMENT
-    pass
+    mini_domain = float('inf')  # set the domain to infinity  # minimum value   -->  minimum domain
+    mini_val = None
+    unassigned_vars = csp.get_all_unasgn_vars()
+
+    # find the minimum value in the domain
+    for i in unassigned_vars:
+        if i.cur_domain_size() < mini_domain:
+            mini_domain = i.cur_domain_size()
+            mini_val = i
+    return mini_val  
+   
+    

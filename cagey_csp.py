@@ -87,7 +87,9 @@ from cspbase import *
 
 def binary_ne_grid(cagey_grid):
     ##IMPLEMENT
+    # [0] not [0][0]
     pass
+
 
 
 def nary_ad_grid(cagey_grid):

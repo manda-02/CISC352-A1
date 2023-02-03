@@ -107,7 +107,7 @@ def prop_FC(csp, newVar=None):
 
 
     for i in fc_constraints:
-        if i.get_unasgn() == 1:
+        if i.get_n_unasgn() == 1:
             un_assigned = i.get_unasgn_vars()[0]
 
             for j in un_assigned.cur_domain():

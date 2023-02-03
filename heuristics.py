@@ -35,16 +35,17 @@ def ord_dh(csp):
     # which have other unassigned variables.
 
     # IMPLEMENT
-    mini_domain = len(csp.get_cons_with_var())   # degree of the heuristic
     mini_val = None
     unassigned_vars = csp.get_all_unasgn_vars()
+    var_degree = float("-inf")
 
     # find the minimum value in the domain
     for i in unassigned_vars:
-        if i.cur_domain_size() < mini_domain:
-            mini_domain = i.cur_domain_size()
+         curr = len(csp.get_cons_with_var(i))
+         if curr > var_degree:
+            var_degree = curr
             mini_val = i
-    return mini_val  
+    return mini_val 
    
 
 def ord_mrv(csp):

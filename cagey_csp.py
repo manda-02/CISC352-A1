@@ -86,16 +86,21 @@ An example of a 3x3 puzzle would be defined as:
 from cspbase import *
 
 def binary_ne_grid(cagey_grid):
+    # A model of a Cagey grid (without cage constraints) built using only binary not-equal constraints for
+    # both the row and column constraints.
     ##IMPLEMENT
     # [0] not [0][0]
     pass
 
-
-
 def nary_ad_grid(cagey_grid):
+    # A model of a Cagey grid (without cage constraints) built using only n-ary all-different constraints
+    # for both the row and column constraints.
     ## IMPLEMENT
     pass
 
 def cagey_csp_model(cagey_grid):
+    # A model built using your choice of (1) binary binary not-equal, or (2) n-ary all-different constraints
+    # for the grid, together with (3) cage constraints. That is, you will choose one of the previous two grid
+    # models and expand it to include cage constraints.
     ##IMPLEMENT
     pass

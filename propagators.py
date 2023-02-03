@@ -95,14 +95,38 @@ def prop_FC(csp, newVar=None):
 
     # If newVar is None, forward check all constraints. 
     # Otherwise only check constraints containing newVar.
+    
+    # pruned_vals = []
+    # constraints = []
+    
+    # if(newVar == None):
+    #     constraints = csp.get_all_cons()
+    # else:
+    #     constraints = csp.get_cons_with_var(newVar)
+    
+    # for c in constraints:
+    #     if c.get_n_unasgn() == 1:
+    #         var = c.get_unasgn_vars()[0]
+            
+    #         for d in var.cur_domain():
+    #             if not c.has_support(var, d):
+    #                 pair = (var, d)
+    #                 if(pair not in pruned_vals):
+    #                     pruned_vals.append(pair)
+    #                     var.prune_value(d)
+                        
+    #         if var.cur_domain_size() == 0:
+    #             return False, pruned_vals
+            
+    # return True, 
+    
     fc_constraints = []
     pruned = []
 
-    if (newVar != None):
-        fc_constraints = csp.get_cons_with_var(newVar)
-    else:
+    if (newVar == None):
         fc_constraints = csp.get_all_cons()
-
+    else:
+        fc_constraints = csp.get_cons_with_var(newVar)
 
     for i in fc_constraints:
         if i.get_unasgn() == 1:

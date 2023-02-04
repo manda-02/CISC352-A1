@@ -89,8 +89,50 @@ def binary_ne_grid(cagey_grid):
     # A model of a Cagey grid (without cage constraints) built using only binary not-equal constraints for
     # both the row and column constraints.
     ##IMPLEMENT
-    # [0] not [0][0]
-    pass
+
+    grid = cagey_grid[0]
+    queue = []
+    constraints = []
+    num = []
+    tuples = []
+    for i in range(grid):
+        vals = []
+        for j in range(grid):
+            domain = list(range(1, grid + 1))
+            vals.append(Variable("%d%d"%(i, j), domain))
+        queue.append(vals)
+    for r in queue:
+        for v in r:
+            num.append(v)
+    csp = CSP("binary_ne_grid", num)
+
+    # check the total possible tuples
+    list_of_perms =[]
+    for i in range(1, grid + 1):
+        for j in range(1, grid + 1):
+            if i != j:
+                list_of_perms.append((i,j))
+                
+    for t in list_of_perms:
+        tuples.append(t)
+
+    for i in range(grid):
+        for j in range(grid):
+            for k in range(j + 1, grid):
+                # check the rows
+                cons = Constraint("r%d%d%d"%(i,j,k), [queue[i][j], queue[i][k]])
+                cons.add_satisfying_tuples(tuples)
+                constraints.append(cons)
+
+                # check the cols
+                cons = Constraint("c%d%d%d"%(i,j,k), [queue[j][i], queue[k][i]])
+                cons.add_satisfying_tuples(tuples)
+                constraints.append(cons)
+    for constraint in constraints:
+        csp.add_constraint(constraint)
+
+    return csp, queue
+
 
 def nary_ad_grid(cagey_grid):
     # A model of a Cagey grid (without cage constraints) built using only n-ary all-different constraints

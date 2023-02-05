@@ -108,8 +108,8 @@ def prop_FC(csp, newVar=None):
 
     for i in fc_constraints:
         if i.get_n_unasgn() == 1:
+            # first element of the list
             un_assigned = i.get_unasgn_vars()[0]
-
             for j in un_assigned.cur_domain():
                 if not i.check_var_val(un_assigned, j):
                     tuple = (un_assigned, j)
@@ -167,11 +167,15 @@ def prop_GAC(csp, newVar=None):
     
     while len(queue) != 0:
         q = queue.pop(0)
+        # elements in the constraint
         for elem in q.get_scope():
+            # values in the current domain
             for j in elem.cur_domain():
-                if not q.check_var_val(elem, j):     # change this   if cannot be satisfied
+                if not q.check_var_val(elem, j):     
                     tuple = (elem, j)
+                    # tuple is not pruned
                     if(tuple not in pruned):
+                        # prune the tuple
                         pruned.append(tuple)
                         elem.prune_value(j)
                     if elem.cur_domain_size() == 0:   

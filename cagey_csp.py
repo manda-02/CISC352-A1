@@ -95,11 +95,19 @@ def binary_ne_grid(cagey_grid):
     constraints = []
     num = []
     tuples = []
+    list_vals = []
+    
     for i in range(grid):
-        vals = []
+        vals = list_vals
         for j in range(grid):
-            domain = list(range(1, grid + 1))
-            vals.append(Variable("%d%d"%(i, j), domain))
+            # create a list of the range of grid
+            domain = []
+            # add all the elements to the list of domain
+            for k in range(1, grid+1):
+                domain.append(k)
+            #domain = list(range(1, grid + 1))   # change this
+        vari = Variable("%d%d"%(i, j), domain)
+        vals.append(vari)  # change this
         queue.append(vals)
     for r in queue:
         for v in r:
@@ -111,7 +119,8 @@ def binary_ne_grid(cagey_grid):
     for i in range(1, grid + 1):
         for j in range(1, grid + 1):
             if i != j:
-                list_of_perms.append((i,j))
+                pairs = (i,j)
+                list_of_perms.append((pairs))
                 
     for t in list_of_perms:
         tuples.append(t)
@@ -138,6 +147,7 @@ def nary_ad_grid(cagey_grid):
     # A model of a Cagey grid (without cage constraints) built using only n-ary all-different constraints
     # for both the row and column constraints.
     ## IMPLEMENT
+
     pass
 
 def cagey_csp_model(cagey_grid):

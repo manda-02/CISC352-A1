@@ -84,6 +84,7 @@ An example of a 3x3 puzzle would be defined as:
 '''
 
 from cspbase import *
+from itertools import permutations
 
 def binary_ne_grid(cagey_grid):
     # A model of a Cagey grid (without cage constraints) built using only binary not-equal constraints for
@@ -119,26 +120,65 @@ def binary_ne_grid(cagey_grid):
     for i in range(grid):
         for j in range(grid):
             for k in range(j + 1, grid):
-                # check the rows
-                cons = Constraint("r%d%d%d"%(i,j,k), [queue[i][j], queue[i][k]])
+                # check the cols
+                queue_cols = [queue[j][i], queue[k][i]]
+                cons = Constraint("c%d%d%d"%(i,j,k), queue_cols)
                 cons.add_satisfying_tuples(tuples)
                 constraints.append(cons)
 
-                # check the cols
-                cons = Constraint("c%d%d%d"%(i,j,k), [queue[j][i], queue[k][i]])
+                # check the rows
+                queue_rows = [queue[i][j], queue[i][k]]
+                cons = Constraint("r%d%d%d"%(i,j,k), queue_rows)
                 cons.add_satisfying_tuples(tuples)
                 constraints.append(cons)
+
     for constraint in constraints:
         csp.add_constraint(constraint)
 
     return csp, queue
 
-
 def nary_ad_grid(cagey_grid):
     # A model of a Cagey grid (without cage constraints) built using only n-ary all-different constraints
     # for both the row and column constraints.
     ## IMPLEMENT
-    pass
+    
+    grid = cagey_grid[0]
+    vars = []
+    tuples = []
+    row = []
+    col = []
+    csp = CSP("nary_ad_grid")
+
+    for i in range(1, grid + 1):
+        row.append([])
+        col.append([])
+
+    for i in range(1, grid + 1):
+        y_variables = []
+
+        for j in range(1, grid + 1):
+            new_var = Variable("%d%d"%(i, j), domain = list(range(1, grid + 1)))
+            row[i - 1].append(new_var)
+            col[j - 1].append(new_var)
+            csp.add_var(new_var)
+            y_variables.append(new_var)
+        vars.append(y_variables)
+    for tuple in permutations(list(range(1, grid + 1)), grid):
+        tuples.append(tuple)
+    for i in range(1, grid + 1, 1):
+
+        columns = col[i - 1]
+        cons = Constraint("c%d"%(i), columns)
+        cons.add_satisfying_tuples(tuples)
+        csp.add_constraint(cons)
+
+        rows = row[i - 1]
+        cons = Constraint("r%d"%(i), rows)
+        cons.add_satisfying_tuples(tuples)
+        csp.add_constraint(cons)
+
+
+    return csp, vars
 
 def cagey_csp_model(cagey_grid):
     # A model built using your choice of (1) binary binary not-equal, or (2) n-ary all-different constraints

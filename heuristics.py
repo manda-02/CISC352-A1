@@ -33,8 +33,8 @@ def ord_dh(csp):
     # A variable ordering heuristic that chooses the next variable to be assigned according to the Degree
     # heuristic (DH). ord dh returns the variable that is involved in the largest number of constraints,
     # which have other unassigned variables.
+    #IMPLEMENT
 
-    # IMPLEMENT
     mini_val = None
     unassigned_vars = csp.get_all_unasgn_vars()
     var_degree = float("-inf")
@@ -54,7 +54,8 @@ def ord_mrv(csp):
     # A variable ordering heuristic that chooses the next variable to be assigned according to the MinimumRemaining-Value (MRV) heuristic. 
     # ord mrv returns the variable with the most constrained current
     # domain (i.e., the variable with the fewest legal values remaining).
-    # IMPLEMENT
+    #IMPLEMENT
+
     mini_domain = float('inf')  # set the domain to infinity  # minimum value   -->  minimum domain
     mini_val = None
     unassigned_vars = csp.get_all_unasgn_vars()

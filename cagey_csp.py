@@ -97,6 +97,7 @@ def binary_ne_grid(cagey_grid):
     num = []
     tuples = []
     list_vals = []
+    final_grid = grid + 1
     
     for i in range(grid):
         vals = list_vals
@@ -104,7 +105,7 @@ def binary_ne_grid(cagey_grid):
             # create a list of the range of grid
             domain = []
             # add all the elements to the list of domain
-            for k in range(1, grid+1):
+            for k in range(1, final_grid):
                 domain.append(k)
             #domain = list(range(1, grid + 1))   # change this
         vari = Variable("%d%d"%(i, j), domain)
@@ -117,8 +118,8 @@ def binary_ne_grid(cagey_grid):
 
     # check the total possible tuples
     list_of_perms =[]
-    for i in range(1, grid + 1):
-        for j in range(1, grid + 1):
+    for i in range(1, final_grid):
+        for j in range(1, final_grid):
             if i != j:
                 pairs = (i,j)
                 list_of_perms.append((pairs))
@@ -156,19 +157,20 @@ def nary_ad_grid(cagey_grid):
     tuples = []
     row = []
     col = []
+    final_grid = grid + 1
     csp = CSP("nary_ad_grid")
 
-    for i in range(1, grid + 1):
+    for i in range(1, final_grid):
         row.append([])
         col.append([])
 
-    for i in range(1, grid + 1):
+    for i in range(1,final_grid):
         y_variables = []
 
-        for j in range(1, grid + 1):
+        for j in range(1, final_grid):
             domain = []
             # add all the elements to the list of domain
-            for k in range(1, grid + 1):
+            for k in range(1, final_grid):
                 domain.append(k)
             new_var = Variable("%d%d"%(i, j), domain)
             row[i - 1].append(new_var)
@@ -178,14 +180,13 @@ def nary_ad_grid(cagey_grid):
         vars.append(y_variables)
     
     perm_list = []
-    # list(range(1, grid + 1)
-    for p in range(1, grid + 1):
+    for p in range(1, final_grid):
         perm_list.append(p)
 
-    for tuple in permutations(perm_list, grid):  # change
+    for tuple in permutations(perm_list, grid):
         tuples.append(tuple)
 
-    for i in range(1, grid + 1, 1):
+    for i in range(1, final_grid):
 
         columns = col[i - 1]
         cons = Constraint("c%d"%(i), columns)

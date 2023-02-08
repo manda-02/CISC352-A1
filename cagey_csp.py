@@ -107,9 +107,8 @@ def binary_ne_grid(cagey_grid):
             # add all the elements to the list of domain
             for k in range(1, final_grid):
                 domain.append(k)
-            #domain = list(range(1, grid + 1))   # change this
         vari = Variable("%d%d"%(i, j), domain)
-        vals.append(vari)  # change this
+        vals.append(vari)
         queue.append(vals)
     for r in queue:
         for v in r:
@@ -160,16 +159,12 @@ def nary_ad_grid(cagey_grid):
     final_grid = grid + 1
     csp = CSP("nary_ad_grid")
 
-<<<<<<< HEAD
     for i in range(1, final_grid):
-=======
-    for i in range(1, grid + 1):
         # add columns and rows
->>>>>>> a4bf1737e71b7208024a4fa99610520872d2201e
         row.append([])
         col.append([])
 
-    for i in range(1,final_grid):
+    for i in range(1, final_grid):
         y_variables = []
 
         for j in range(1, final_grid):
@@ -185,11 +180,7 @@ def nary_ad_grid(cagey_grid):
         vars.append(y_variables)
     
     perm_list = []
-<<<<<<< HEAD
     for p in range(1, final_grid):
-=======
-    for p in range(1, grid + 1):
->>>>>>> a4bf1737e71b7208024a4fa99610520872d2201e
         perm_list.append(p)
 
     for tuple in permutations(perm_list, grid):
@@ -216,4 +207,57 @@ def cagey_csp_model(cagey_grid):
     # for the grid, together with (3) cage constraints. That is, you will choose one of the previous two grid
     # models and expand it to include cage constraints.
     ##IMPLEMENT
-    pass
+    grid = cagey_grid[0]
+    queue = []
+    constraints = []
+    num = []
+    tuples = []
+    list_vals = []
+    final_grid = grid + 1
+    
+    for i in range(grid):
+        vals = list_vals
+        for j in range(grid):
+            # create a list of the range of grid
+            domain = []
+            # add all the elements to the list of domain
+            for k in range(1, final_grid):
+                domain.append(k)
+        vari = Variable("%d%d"%(i, j), domain)
+        vals.append(vari)
+        queue.append(vals)
+    for r in queue:
+        for v in r:
+            num.append(v)
+    csp = CSP("binary_ne_grid", num)
+
+    # check the total possible tuples
+    list_of_perms =[]
+    for i in range(1, final_grid):
+        for j in range(1, final_grid):
+            if i != j:
+                pairs = (i, j)
+                list_of_perms.append((pairs))
+                
+    for t in list_of_perms:
+        tuples.append(t)
+
+    for i in range(grid):
+        for j in range(grid):
+            for k in range(j + 1, grid):
+                # check the cols
+                queue_cols = [queue[j][i], queue[k][i]]
+                cons = Constraint("c%d%d%d"%(i, j, k), queue_cols)
+                cons.add_satisfying_tuples(tuples)
+                constraints.append(cons)
+
+                # check the rows
+                queue_rows = [queue[i][j], queue[i][k]]
+                cons = Constraint("r%d%d%d"%(i, j, k), queue_rows)
+                cons.add_satisfying_tuples(tuples)
+                constraints.append(cons)
+
+    for constraint in constraints:
+        csp.add_constraint(constraint)
+
+    return csp, queue

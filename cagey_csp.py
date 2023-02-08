@@ -258,36 +258,34 @@ def cagey_csp_model(cagey_grid):
             # append to lists
             # check domain
                 # check if 0, 1 or 2
-                    # add or subtract sum to the domain
+                    # add or subtract sum to the domain depending on val
                     # if target add to list
             # add to lists
+    # check in range of grid
+        # check in range of grid
     for i in range(grid):
         for j in range(grid):
             for k in range(j + 1, grid):
-                # check the cols
+                # check vars in cols
+                # set constraints
+                # add tuples to list
                 queue_cols = [queue[j][i], queue[k][i]]
                 cons = Constraint("c%d%d%d"%(i, j, k), queue_cols)
                 cons.add_satisfying_tuples(tuples)
                 constraints.append(cons)
-
-                # check the rows
+               
+                # check vars in rows
+                # set constraints
+                # add tuples to list
                 queue_rows = [queue[i][j], queue[i][k]]
                 cons = Constraint("r%d%d%d"%(i, j, k), queue_rows)
                 cons.add_satisfying_tuples(tuples)
                 constraints.append(cons)
-    # check in range of grid
-        # check in range of grid
-            # check vars in row
-                # set constraints
-                # add tuples to list
-            # check vars in col
-                # set constraints
-                # add tuples to list
+
+    # check vars in row and cold
     for constraint in constraints:
+        # add to list
         csp.add_constraint(constraint)
-    # check vars in row
-        # add to list
-    # check final vars in col
-        # add to list
+
     # return csp and vars
     return csp, queue

@@ -176,8 +176,13 @@ def nary_ad_grid(cagey_grid):
             csp.add_var(new_var)
             y_variables.append(new_var)
         vars.append(y_variables)
-        
-    for tuple in permutations(list(range(1, grid + 1)), grid):  # change
+    
+    perm_list = []
+    # list(range(1, grid + 1)
+    for p in range(1, grid + 1):
+        perm_list.append(p)
+
+    for tuple in permutations(perm_list, grid):  # change
         tuples.append(tuple)
 
     for i in range(1, grid + 1, 1):

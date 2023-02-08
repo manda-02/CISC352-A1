@@ -210,40 +210,6 @@ def cagey_csp_model(cagey_grid):
     ##IMPLEMENT
 
     # initialize variables
-    # label csp
-    # check in range of final_grid
-        # check in range of final_grid
-            # add var to rows list
-    # check in range of cagey_grid
-        # check if the length is 2
-            # check row index
-            # check col index
-        # set target
-        # check elem in range of target
-            # check row
-            # check col
-            # append to lists
-            # check domain
-                # check if 0, 1 or 2
-                    # add or subtract sum to the domain
-                    # if target add to list
-            # add to lists
-    # check in range of grid
-        # check in range of grid
-            # check vars in row
-                # set constraints
-                # add tuples to list
-            # check vars in col
-                # set constraints
-                # add tuples to list
-    # check vars in row
-        # add to list
-    # check final vars in col
-        # add to list
-    # return csp and vars
-
-
-
     grid = cagey_grid[0]
     queue = []
     constraints = []
@@ -251,7 +217,11 @@ def cagey_csp_model(cagey_grid):
     tuples = []
     list_vals = []
     final_grid = grid + 1
-    
+    # label csp
+    csp = CSP("cagey_csp_model", num)
+    # check in range of grid
+        # check in range of final_grid
+            # add var to rows list
     for i in range(grid):
         vals = list_vals
         for j in range(grid):
@@ -266,7 +236,6 @@ def cagey_csp_model(cagey_grid):
     for r in queue:
         for v in r:
             num.append(v)
-    csp = CSP("cagey_csp_model", num)
 
     # check the total possible tuples
     list_of_perms =[]
@@ -278,7 +247,20 @@ def cagey_csp_model(cagey_grid):
                 
     for t in list_of_perms:
         tuples.append(t)
-
+    # check in range of cagey_grid
+        # check if the length is 2
+            # check row index
+            # check col index
+        # set target
+        # check elem in range of target
+            # check row
+            # check col
+            # append to lists
+            # check domain
+                # check if 0, 1 or 2
+                    # add or subtract sum to the domain
+                    # if target add to list
+            # add to lists
     for i in range(grid):
         for j in range(grid):
             for k in range(j + 1, grid):
@@ -293,8 +275,19 @@ def cagey_csp_model(cagey_grid):
                 cons = Constraint("r%d%d%d"%(i, j, k), queue_rows)
                 cons.add_satisfying_tuples(tuples)
                 constraints.append(cons)
-
+    # check in range of grid
+        # check in range of grid
+            # check vars in row
+                # set constraints
+                # add tuples to list
+            # check vars in col
+                # set constraints
+                # add tuples to list
     for constraint in constraints:
         csp.add_constraint(constraint)
-
+    # check vars in row
+        # add to list
+    # check final vars in col
+        # add to list
+    # return csp and vars
     return csp, queue

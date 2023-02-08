@@ -160,7 +160,12 @@ def nary_ad_grid(cagey_grid):
     final_grid = grid + 1
     csp = CSP("nary_ad_grid")
 
+<<<<<<< HEAD
     for i in range(1, final_grid):
+=======
+    for i in range(1, grid + 1):
+        # add columns and rows
+>>>>>>> a4bf1737e71b7208024a4fa99610520872d2201e
         row.append([])
         col.append([])
 
@@ -180,7 +185,11 @@ def nary_ad_grid(cagey_grid):
         vars.append(y_variables)
     
     perm_list = []
+<<<<<<< HEAD
     for p in range(1, final_grid):
+=======
+    for p in range(1, grid + 1):
+>>>>>>> a4bf1737e71b7208024a4fa99610520872d2201e
         perm_list.append(p)
 
     for tuple in permutations(perm_list, grid):
@@ -188,16 +197,17 @@ def nary_ad_grid(cagey_grid):
 
     for i in range(1, final_grid):
 
+        # check the cols
         columns = col[i - 1]
         cons = Constraint("c%d"%(i), columns)
         cons.add_satisfying_tuples(tuples)
         csp.add_constraint(cons)
 
+        # check the rows
         rows = row[i - 1]
         cons = Constraint("r%d"%(i), rows)
         cons.add_satisfying_tuples(tuples)
         csp.add_constraint(cons)
-
 
     return csp, vars
 

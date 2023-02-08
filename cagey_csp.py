@@ -85,6 +85,7 @@ An example of a 3x3 puzzle would be defined as:
 
 from cspbase import *
 from itertools import permutations
+from itertools import product
 
 def binary_ne_grid(cagey_grid):
     # A model of a Cagey grid (without cage constraints) built using only binary not-equal constraints for
@@ -207,6 +208,42 @@ def cagey_csp_model(cagey_grid):
     # for the grid, together with (3) cage constraints. That is, you will choose one of the previous two grid
     # models and expand it to include cage constraints.
     ##IMPLEMENT
+
+    # initialize variables
+    # label csp
+    # check in range of final_grid
+        # check in range of final_grid
+            # add var to rows list
+    # check in range of cagey_grid
+        # check if the length is 2
+            # check row index
+            # check col index
+        # set target
+        # check elem in range of target
+            # check row
+            # check col
+            # append to lists
+            # check domain
+                # check if 0, 1 or 2
+                    # add or subtract sum to the domain
+                    # if target add to list
+            # add to lists
+    # check in range of grid
+        # check in range of grid
+            # check vars in row
+                # set constraints
+                # add tuples to list
+            # check vars in col
+                # set constraints
+                # add tuples to list
+    # check vars in row
+        # add to list
+    # check final vars in col
+        # add to list
+    # return csp and vars
+
+
+
     grid = cagey_grid[0]
     queue = []
     constraints = []
@@ -229,7 +266,7 @@ def cagey_csp_model(cagey_grid):
     for r in queue:
         for v in r:
             num.append(v)
-    csp = CSP("binary_ne_grid", num)
+    csp = CSP("cagey_csp_model", num)
 
     # check the total possible tuples
     list_of_perms =[]

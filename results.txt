@@ -7939,3 +7939,311 @@ Code quality: ?/0.5
 Running time: 2023_02_08-13:45:50
 
 ===========================================
+test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
+test_cage_existence (__main__.TestCageConstraints) ... ERROR
+test_cages_1 (__main__.TestCageConstraints) ... ERROR
+test_cages_2 (__main__.TestCageConstraints) ... ERROR
+test_cages_3 (__main__.TestCageConstraints) ... ERROR
+test_cages_4 (__main__.TestCageConstraints) ... ERROR
+test_cages_5 (__main__.TestCageConstraints) ... ERROR
+test_cages_6 (__main__.TestCageConstraints) ... ERROR
+test_dh_1 (__main__.TestDH) ... ok
+test_dh_2 (__main__.TestDH) ... ok
+test_dh_3 (__main__.TestDH) ... ok
+test_dh_4 (__main__.TestDH) ... ok
+test_mrv_1 (__main__.TestMRV) ... ok
+test_mrv_2 (__main__.TestMRV) ... ok
+test_mrv_3 (__main__.TestMRV) ... ok
+test_mrv_4 (__main__.TestMRV) ... ok
+test_nary_grid_1 (__main__.TestNaryGrid) ... ok
+test_nary_grid_2 (__main__.TestNaryGrid) ... ok
+test_nary_grid_3 (__main__.TestNaryGrid) ... ok
+test_nary_grid_4 (__main__.TestNaryGrid) ... ok
+test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
+test_prop_fc_0 (__main__.TestPropFC) ... ok
+test_prop_fc_1 (__main__.TestPropFC) ... ok
+test_prop_fc_2 (__main__.TestPropFC) ... ok
+test_prop_fc_3 (__main__.TestPropFC) ... ok
+test_prop_fc_4 (__main__.TestPropFC) ... ok
+test_prop_GAC_0 (__main__.TestPropGAC) ... ok
+test_prop_GAC_1 (__main__.TestPropGAC) ... ok
+test_prop_GAC_2 (__main__.TestPropGAC) ... ok
+test_prop_GAC_3 (__main__.TestPropGAC) ... ok
+test_prop_GAC_4 (__main__.TestPropGAC) ... ok
+test_prop_GAC_5 (__main__.TestPropGAC) ... ok
+test_prop_GAC_6 (__main__.TestPropGAC) ... ok
+test_prop_GAC_7 (__main__.TestPropGAC) ... ok
+test_prop_GAC_8 (__main__.TestPropGAC) ... ok
+test_prop_GAC_9 (__main__.TestPropGAC) ... ok
+
+======================================================================
+ERROR: test_cage_existence (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 619, in test_cage_existence
+    if v.name == correct:
+AttributeError: 'list' object has no attribute 'name'
+
+======================================================================
+ERROR: test_cages_1 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 656, in test_cages_1
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_2 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 730, in test_cages_2
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_3 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 805, in test_cages_3
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_4 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 879, in test_cages_4
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_5 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 953, in test_cages_5
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_6 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 1027, in test_cages_6
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 44 tests in 2.028s
+
+FAILED (errors=7)
+----------------------------------------------------------------------
+Time spent:
+
+test_bne_grid_1: 0.0019s
+test_bne_grid_2: 0.0021s
+test_bne_grid_3: 0.0040s
+test_bne_grid_4: 0.0083s
+test_bne_grid_5: 0.0179s
+test_nary_grid_1: 0.0000s
+test_nary_grid_2: 0.0010s
+test_nary_grid_3: 0.0030s
+test_nary_grid_4: 0.0305s
+test_bin_prop_fc_0: 0.0010s
+test_bin_prop_fc_1: 0.0020s
+test_bin_prop_fc_2: 0.0020s
+test_bin_prop_fc_3: 0.0030s
+test_bin_prop_fc_4: 0.0021s
+test_prop_fc_0: 0.0011s
+test_prop_fc_1: 0.3285s
+test_prop_fc_2: 0.6181s
+test_prop_fc_3: 0.0009s
+test_prop_fc_4: 0.6778s
+test_prop_GAC_0: 0.0010s
+test_prop_GAC_1: 0.0020s
+test_prop_GAC_2: 0.0021s
+test_prop_GAC_3: 0.0031s
+test_prop_GAC_4: 0.0030s
+test_prop_GAC_5: 0.0076s
+test_prop_GAC_6: 0.0370s
+test_prop_GAC_7: 0.0092s
+test_prop_GAC_8: 0.0763s
+test_prop_GAC_9: 0.1151s
+----------------------------------------------------------------------
+Grades:
+
+FC: 1.0/1.0
+GAC: 1.5/1.5
+MRV: 0.5/0.5
+DH: 0.5/0.5
+BINARY: 0.5/0.5
+NARY: 0.5/0.5
+CAGEY: 0.0/1.0
+
+TOTAL: 4.5/5.5
+Code quality: ?/0.5
+
+Running time: 2023_02_08-18:28:32
+
+===========================================
+test_bne_grid_1 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_2 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_3 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_4 (__main__.TestBinaryGrid) ... ok
+test_bne_grid_5 (__main__.TestBinaryGrid) ... ok
+test_cage_existence (__main__.TestCageConstraints) ... ERROR
+test_cages_1 (__main__.TestCageConstraints) ... ERROR
+test_cages_2 (__main__.TestCageConstraints) ... ERROR
+test_cages_3 (__main__.TestCageConstraints) ... ERROR
+test_cages_4 (__main__.TestCageConstraints) ... ERROR
+test_cages_5 (__main__.TestCageConstraints) ... ERROR
+test_cages_6 (__main__.TestCageConstraints) ... ERROR
+test_dh_1 (__main__.TestDH) ... ok
+test_dh_2 (__main__.TestDH) ... ok
+test_dh_3 (__main__.TestDH) ... ok
+test_dh_4 (__main__.TestDH) ... ok
+test_mrv_1 (__main__.TestMRV) ... ok
+test_mrv_2 (__main__.TestMRV) ... ok
+test_mrv_3 (__main__.TestMRV) ... ok
+test_mrv_4 (__main__.TestMRV) ... ok
+test_nary_grid_1 (__main__.TestNaryGrid) ... ok
+test_nary_grid_2 (__main__.TestNaryGrid) ... ok
+test_nary_grid_3 (__main__.TestNaryGrid) ... ok
+test_nary_grid_4 (__main__.TestNaryGrid) ... ok
+test_bin_prop_fc_0 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_1 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_2 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_3 (__main__.TestPropFC) ... ok
+test_bin_prop_fc_4 (__main__.TestPropFC) ... ok
+test_prop_fc_0 (__main__.TestPropFC) ... ok
+test_prop_fc_1 (__main__.TestPropFC) ... ok
+test_prop_fc_2 (__main__.TestPropFC) ... ok
+test_prop_fc_3 (__main__.TestPropFC) ... ok
+test_prop_fc_4 (__main__.TestPropFC) ... ok
+test_prop_GAC_0 (__main__.TestPropGAC) ... ok
+test_prop_GAC_1 (__main__.TestPropGAC) ... ok
+test_prop_GAC_2 (__main__.TestPropGAC) ... ok
+test_prop_GAC_3 (__main__.TestPropGAC) ... ok
+test_prop_GAC_4 (__main__.TestPropGAC) ... ok
+test_prop_GAC_5 (__main__.TestPropGAC) ... ok
+test_prop_GAC_6 (__main__.TestPropGAC) ... ok
+test_prop_GAC_7 (__main__.TestPropGAC) ... ok
+test_prop_GAC_8 (__main__.TestPropGAC) ... ok
+test_prop_GAC_9 (__main__.TestPropGAC) ... ok
+
+======================================================================
+ERROR: test_cage_existence (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 619, in test_cage_existence
+    if v.name == correct:
+AttributeError: 'list' object has no attribute 'name'
+
+======================================================================
+ERROR: test_cages_1 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 656, in test_cages_1
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_2 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 730, in test_cages_2
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_3 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 805, in test_cages_3
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_4 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 879, in test_cages_4
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_5 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 953, in test_cages_5
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_cages_6 (__main__.TestCageConstraints)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\OWNER\CISC352-A1\autograder_stu.py", line 1027, in test_cages_6
+    if not isinstance(guess[0].scope[0].dom[0], str):
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 44 tests in 1.890s
+
+FAILED (errors=7)
+----------------------------------------------------------------------
+Time spent:
+
+test_bne_grid_1: 0.0024s
+test_bne_grid_2: 0.0020s
+test_bne_grid_3: 0.0040s
+test_bne_grid_4: 0.0100s
+test_bne_grid_5: 0.0172s
+test_nary_grid_1: 0.0000s
+test_nary_grid_2: 0.0010s
+test_nary_grid_3: 0.0031s
+test_nary_grid_4: 0.0278s
+test_bin_prop_fc_0: 0.0000s
+test_bin_prop_fc_1: 0.0020s
+test_bin_prop_fc_2: 0.0009s
+test_bin_prop_fc_3: 0.0010s
+test_bin_prop_fc_4: 0.0020s
+test_prop_fc_0: 0.0010s
+test_prop_fc_1: 0.3151s
+test_prop_fc_2: 0.5925s
+test_prop_fc_3: 0.0020s
+test_prop_fc_4: 0.5944s
+test_prop_GAC_0: 0.0011s
+test_prop_GAC_1: 0.0019s
+test_prop_GAC_2: 0.0040s
+test_prop_GAC_3: 0.0040s
+test_prop_GAC_4: 0.0021s
+test_prop_GAC_5: 0.0070s
+test_prop_GAC_6: 0.0393s
+test_prop_GAC_7: 0.0071s
+test_prop_GAC_8: 0.0755s
+test_prop_GAC_9: 0.1186s
+----------------------------------------------------------------------
+Grades:
+
+FC: 1.0/1.0
+GAC: 1.5/1.5
+MRV: 0.5/0.5
+DH: 0.5/0.5
+BINARY: 0.5/0.5
+NARY: 0.5/0.5
+CAGEY: 0.0/1.0
+
+TOTAL: 4.5/5.5
+Code quality: ?/0.5
+
+Running time: 2023_02_08-18:35:42
+
+===========================================

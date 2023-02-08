@@ -122,27 +122,6 @@ def prop_FC(csp, newVar=None):
             
     return True, pruned
 
-
-    # A propagator function that propagates according to the FC 
-    # algorithm that check constraints that have
-    # exactly one variable in their scope that has not assigned 
-    # with a value, and prune appropriately. 
-    # for i in constraints:
-    #     if i.get_n_unasgn() == 1:
-
-    # unassigned = []
-    # for i in fc_constraints:
-    #     if i.get_n_unasgn() == 1:
-    #         # unassigned_v = fc_constraints[i]
-    #         v = unassigned.append(fc_constraints[i])
-    #         for j in v.get_scope():
-    #             if v.get_scope() == 0:
-    #                 pruned.append(v)
-    #                 # v.prune_value(???)
-    #                 return False, pruned
-
-
-
 def prop_GAC(csp, newVar=None):
     '''Do GAC propagation. If newVar is None we do initial GAC enforce
        processing all constraints. Otherwise we do GAC enforce with

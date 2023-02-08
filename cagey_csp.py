@@ -166,14 +166,20 @@ def nary_ad_grid(cagey_grid):
         y_variables = []
 
         for j in range(1, grid + 1):
-            new_var = Variable("%d%d"%(i, j), domain = list(range(1, grid + 1)))
+            domain = []
+            # add all the elements to the list of domain
+            for k in range(1, grid + 1):
+                domain.append(k)
+            new_var = Variable("%d%d"%(i, j), domain)
             row[i - 1].append(new_var)
             col[j - 1].append(new_var)
             csp.add_var(new_var)
             y_variables.append(new_var)
         vars.append(y_variables)
-    for tuple in permutations(list(range(1, grid + 1)), grid):
+        
+    for tuple in permutations(list(range(1, grid + 1)), grid):  # change
         tuples.append(tuple)
+
     for i in range(1, grid + 1, 1):
 
         columns = col[i - 1]
